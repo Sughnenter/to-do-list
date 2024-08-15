@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
 
 from django.contrib.auth.views import LoginView, LogoutView
@@ -16,7 +17,6 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('tasks')
-
 
 
 class TaskList(ListView):
@@ -43,6 +43,8 @@ class TaskDelete(DeleteView):
     context_object_name = 'task'
     success_url = reverse_lazy('tasks')
 
-    
+def logoutUser(request):
+    logout(request)
+    return redirect('login')   
 
     
