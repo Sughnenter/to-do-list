@@ -1,15 +1,20 @@
 {% extends 'newapp/main.html' %}
 
 {% block content %}
+<div class="header-bar">
+  <a style="color: rgb(247, 247, 247);
+  text-decoration: none;"" href="{% url 'tasks' %}">&#8592; Back</a>
+</div>
 
+<div class="card-body">
 
 <form method="POST" action="">
   {% csrf_token %}
   <p>are you sure you want to delete "{{task}}"?</p>
   <a href="{% url 'tasks' %}">Go Back</a>
-  <input type="submit" value="confirm"/>
+  <input class="button" type="submit" value="confirm"/>
 </form>
 
-
+</div>
 
 {% endblock content %}

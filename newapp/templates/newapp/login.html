@@ -1,14 +1,14 @@
-{% extends 'newapp/main.html' %}
+{% extends 'newapp/main.html' %} {% block content %}
+<div class="header-bar">
+  <h1>Login</h1>
+</div>
 
-{% block content %}
-<h1>Login</h1>
-
-<form method="POST">
-  {% csrf_token %}
-  {{form.as_p}}
-  <input type="submit" value="login">
-</form>
-
-<p>Don't Have An Account? <a href="{% url 'register' %}">register</a></p>
+<div class="card-body">
+  <form method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <input class="button" type="submit" value="login" />
+  </form>
+  <p>Don't Have An Account? <a href="{% url 'register' %}">register</a></p>
+</div>
 
 {% endblock content %}
