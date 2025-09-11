@@ -1,12 +1,12 @@
-{% extends 'newapp/main.html' %} {% block content %}
-
+{% extends 'newapp/main.html' %} {% block content %} {% load static %} 
+{% load socialaccount %}
 <div class="header-bar">
   <h1>Register</h1>
 </div>
 
 <div class="card-body">
   <form method="POST">
-    {% csrf_token %} 
+    {% csrf_token %}
     <label>{{form.username.label}}</label>
     {{form.username}}
 
@@ -16,11 +16,22 @@
     <label>{{form.password2.label}}</label>
     {{form.password2}}
 
-    
-    <input style="margin-top: 10px;" class="button" type="submit" value="Register" />
+    <input
+      style="margin-top: 10px"
+      class="button"
+      type="submit"
+      value="Register"
+    />
   </form>
-
   <p>Already Have An Account? <a href="{% url 'login' %}">Login</a></p>
+  <a href="{% provider_login_url 'google' %}?next=/" class="google-btn">
+    <img
+      src="https://developers.google.com/identity/images/g-logo.png"
+      alt="Google logo"
+      style="width: 20px; vertical-align: middle; margin-right: 8px"
+    />
+    Sign in with Google
+  </a>
 </div>
 
 {% endblock content %}
